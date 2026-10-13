@@ -40,6 +40,12 @@
 ]
 #v(1em)
 
+// ---- Table of contents (plays the role of \tableofcontents) ----------------
+// Built from the numbered headings; delete these two lines to remove it.
+#show outline: set par.line(numbering: none)
+#outline(depth: 2)
+#pagebreak()
+
 // Stray line from the original .tex: it sat above \section{Introduction},
 // after a lone "S". Kept here as a comment (not typeset) in case it is
 // meant for a later section.
