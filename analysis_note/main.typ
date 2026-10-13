@@ -34,17 +34,11 @@
 #align(center)[
   #title()
   #v(0.2em)
-  #text(size: 1.2em)[Xihe Han]
+  #text(size: 1.2em)[Xihe Han, Claude Opus 5.5 by Anthropic]
   #v(0.2em)
   #datetime.today().display("[month repr:long] [day], [year]")
 ]
 #v(1em)
-
-// ---- Table of contents (plays the role of \tableofcontents) ----------------
-// Built from the numbered headings; delete these two lines to remove it.
-#show outline: set par.line(numbering: none)
-#outline(depth: 2)
-#pagebreak()
 
 // Stray line from the original .tex: it sat above \section{Introduction},
 // after a lone "S". Kept here as a comment (not typeset) in case it is
