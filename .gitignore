@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*_C.d
+*_C.so
+*_C_ACLiC_*
+
+# Data (not tracked)
+data/
+*.root
+
+# Third-party reference material
+ref_vz/
+plots/events/lumi_by_run.txt
