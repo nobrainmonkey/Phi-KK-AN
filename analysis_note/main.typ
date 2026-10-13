@@ -56,4 +56,5 @@
 #include "sections/01_introduction.typ"
 #include "sections/02_dataset_and_trigger.typ"
 #include "sections/03_event_selection.typ"
+#include "sections/04_Signal_extraction.typ"
 #include "sections/05_efficiencies.typ"
