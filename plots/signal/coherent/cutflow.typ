@@ -1,0 +1,11 @@
+#table(columns: (2fr, 1fr, 1fr), align: (left, right, right), stroke: none, table.hline(), table.header([Cumulative selection], [All masses], [Mass window]), table.hline(),
+[Preselected ULS pairs], [1922337], [329903],
+[BBC veto], [313439], [55367],
+[$N_"prim" = 2$], [74804], [11507],
+[$abs(V_z) <= 100 thin "cm"$; $V_r <= 5 thin "cm"$], [46561], [6489],
+[Both tracks: $N_"hits" >= 20$], [45873], [6332],
+[$p_T^(K K) <= 0.1 thin "GeV"\/c$], [10209], [97],
+[$abs(y_(K K)) < 0.5$], [724], [68],
+[$chi^2_(K K) <= 15$], [143], [61],
+[Both tracks: $p_T <= 0.20 thin "GeV"\/c$], [69], [61],
+table.hline())

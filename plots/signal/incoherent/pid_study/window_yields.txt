@@ -1,0 +1,13 @@
+Raw ULS counts, 1 < M_KK < 1.04 GeV/c^2
+Before PID: 1156
+KK <= 10, pipi >= 15
+Without electron cuts: 298
+With ee >= 10 and ee >= 2*KK: 285
+Removed: 13 +/- 3.60555
+Loss: 4.36242 +/- 1.18323%
+
+Kaon cut only (no pion/electron cuts):
+KK <= 8: 505 all masses, 287 window
+KK <= 10: 540 all masses, 298 window
+KK <= 15: 619 all masses, 307 window
+Pion cut at nominal KK: window 298 -> 298; upper mass region 231 -> 225

@@ -1,7 +1,6 @@
-= Track and Pair Selection
+= Track Selection and Particle Identification <sec:tracks>
 After the event selection, each candidate event contains a single primary vertex with exactly two primary tracks.
-This section studies these tracks before any invariant-mass information is used.
-The aim is to characterize the overall track sample, namely its tracking quality, kinematics, and specific energy loss ($dif E slash dif x$) in the TPC, and to define the track and pair requirements applied before signal extraction.
+This section characterizes these tracks through their tracking quality, kinematics, and specific energy loss ($dif E slash dif x$) in the TPC, and establishes the track-quality requirement and the kaon identification used by the candidate selections of @sec:candidates.
 Since the final state is reconstructed from only two tracks in an otherwise empty detector, the track sample is already relatively clean.
 We therefore apply a minimal set of track-quality requirements, chosen to retain as many good tracks as possible while rejecting poorly reconstructed ones.
 
@@ -13,17 +12,15 @@ For the two tracks of a pair, the compatibility with the hypothesis that both tr
 $ chi^2_(X X) = (n sigma_X^((1)))^2 + (n sigma_X^((2)))^2, $ <eq:chi2_pair>
 which is evaluated for the kaon ($chi^2_(K K)$), pion ($chi^2_(pi pi)$), electron ($chi^2_(e e)$), and proton ($chi^2_(p p)$) hypotheses.
 
-All distributions shown in this section share the following preselection:
-- ZDC minimum-bias trigger (700001);
-- bad runs removed;
+The analysis tuple contains the pairs that pass the following preselection:
+- zdcmb trigger (700001), bad runs removed;
 - exactly two primary tracks associated with the pair's vertex;
-- exactly two primary tracks in the event;
-- pair $dif E slash dif x$ compatibility with the kaon--kaon hypothesis, $chi^2_(K K) < 100$ (@eq:chi2_pair);
-- track $p_T < 1 thin "GeV"\/c$;
-- pair $p_T < 1 thin "GeV"\/c$;
+- pair $dif E slash dif x$ compatibility with the kaon--kaon hypothesis, $chi^2_(K K) < 100$ (@eq:chi2_pair), computed from the uncorrected $n sigma_K$ (@sec:nsigk_tof);
+- track $p_T < 1 thin "GeV"\/c$ and pair $p_T^(K K) < 1 thin "GeV"\/c$;
 - pair invariant mass, computed with the kaon mass hypothesis, $M_(K K) < 1.2 thin "GeV"\/c^2$;
 - no TOF requirement.
 
+Unless stated otherwise, the distributions in this section also require the BBC veto, $N_"prim" = 2$, and $abs(V_z) <= 100 thin "cm"$ (@sec:event_selection).
 The two tracks form an unlike-sign (ULS) pair, the signal sample, or a like-sign (LS) pair, which is kept as a background reference.
 
 
@@ -80,13 +77,13 @@ The only implicit low-$p_T$ limit is that strongly curling tracks may not reach 
   columns: (1fr, 1fr),
   stroke: none,
   align: top,
-  [#figure(image("../../plots/track/qa/track/track_nhitsfit.pdf", width: 100%), caption: [Number of fit points of primary tracks in unlike-sign (ULS) and like-sign (LS) pairs, after the BBC veto, $N_"prim" = 2$, and $abs(V_z) < 100 thin "cm"$.]) <fig:nhitsfit_lin>],
+  [#figure(image("../../plots/track/qa/track/track_nhitsfit.pdf", width: 100%), caption: [Number of fit points of primary tracks in ULS and LS pairs.]) <fig:nhitsfit_lin>],
   [#figure(image("../../plots/track/qa/track/track_nhitsfit_log.pdf", width: 100%), caption: [Same as @fig:nhitsfit_lin on a logarithmic scale.]) <fig:nhitsfit_log>],
 )
 
 === Inner TPC Upgrade and the Hit Requirement <sec:itpc>
 
-Run 19 is the first run with the full inner TPC (iTPC), which increased the inner-sector pad rows from 13 to 40 and the maximum number of points per track from 45 to 72.
+The full iTPC (@sec:dataset) increased the inner-sector pad rows from 13 to 40 and the maximum number of points per track from 45 to 72.
 The iTPC is fully operational in this sample: $N_"fit"$ extends well beyond 45 (@fig:nhitsfit_lin), $N_"poss"$ peaks at the full inner-sector and full-TPC lengths (@fig:nhitsposs), and nearly all tracks have iTPC hits (@fig:itpc_rows).
 
 This makes $N_"hits" >= 20$ a mild requirement here, although it is tighter than the 15 hits common in STAR UPC analyses.
@@ -99,52 +96,40 @@ What changed is `MinTrack`, which was 5 in those years and is 2 here, so the Min
   columns: (1fr, 1fr),
   stroke: none,
   align: top,
-  [#figure(image("../../plots/track/qa/track/track_nhitsposs.pdf", width: 100%), caption: [Number of possible points of primary tracks in ULS and LS pairs, same selection as @fig:nhitsfit_lin.]) <fig:nhitsposs>],
-  [#figure(image("../../plots/track/qa/track/track_itpc_rows.pdf", width: 100%), caption: [Number of iTPC pad rows hit per track, same selection as @fig:nhitsfit_lin.]) <fig:itpc_rows>],
+  [#figure(image("../../plots/track/qa/track/track_nhitsposs.pdf", width: 100%), caption: [Number of possible points of primary tracks in ULS and LS pairs.]) <fig:nhitsposs>],
+  [#figure(image("../../plots/track/qa/track/track_itpc_rows.pdf", width: 100%), caption: [Number of iTPC pad rows hit per track.]) <fig:itpc_rows>],
 )
 
-== Coherent and Incoherent Regions <sec:pt_regions>
-
-In coherent production the photon couples to the nucleus as a whole, so the pair $p_T$ is limited by the nuclear size, $p_T lt.tilde planck c \/ R_"Au"$; incoherent production on individual nucleons extends to much larger $p_T$.
-We define the two regions by a cut on the pair $p_T$ alone:
-$ "coherent:" p_T <= 0.1 thin "GeV"\/c, wide "incoherent:" 0.3 < p_T < 0.9 thin "GeV"\/c. $ <eq:pt_regions>
-The incoherent range is a nominal choice; the final range is discussed with the mass spectrum (@sec:sig_incoh).
-
-@fig:pt_regions shows the pair $p_T$ after the preselection.
-The ULS spectrum has a pronounced coherent peak below $0.1 thin "GeV"\/c$ that is absent in the LS pairs, and the two regions are well separated by the $p_T$ cut alone.
-This separation depends only on the nuclear form factor and not on the produced vector meson, so it holds even though the sample is still dominated by pions at this stage.
-
-#figure(image("../../plots/track/qa/pair/pair_pt_regions.pdf", width: 60%), caption: [Pair $p_T$ of ULS and LS pairs, same selection as @fig:nhitsfit_lin, with the coherent and incoherent regions of @eq:pt_regions.]) <fig:pt_regions>
 == Particle Identification
 
-@fig:dedx_p shows $dif E slash dif x$ versus momentum for all tracks (ULS and LS) after the preselection.
+@fig:dedx_p shows $dif E slash dif x$ versus momentum for all tracks (ULS and LS).
 The curves give the expected $dif E slash dif x$ for each hypothesis, taken as the mean $dif E slash dif x$ of tracks with $abs(n sigma_X) < 0.3$, i.e. the reference used in @eq:nsigma.
 At low momentum the kaon band is well separated from the pion band, while the two merge above $p approx 1 thin "GeV"\/c$.
 
 The sample is nevertheless dominated by pions.
 The preselection $chi^2_(K K) < 100$ only limits each track to $abs(n sigma_K) < 10$ (@fig:nsigk_p), which at these momenta still accepts most of the pion band.
 This is also visible in the one-dimensional distributions: $n sigma_pi$ peaks sharply at zero, while $n sigma_K$ is dominated by a broad pion contribution at negative values (@fig:nsig_1d_k, @fig:nsig_1d_pi).
-A dedicated kaon selection is therefore required (@sec:pid_coh, @sec:pid_incoh).
-@fig:nsigk_p also shows that the kaon band is centred at positive $n sigma_K$ rather than at zero; this shift is measured with TOF-identified kaons in @sec:nsigk_tof.
+A dedicated kaon selection is therefore required (@sec:coh_pid, @sec:incoh_pid).
+@fig:nsigk_p also shows that the kaon band is centered at positive $n sigma_K$ rather than at zero; this shift is measured with TOF-identified kaons in @sec:nsigk_tof.
 
 #table(
   columns: (1fr, 1fr),
   stroke: none,
   align: top,
-  [#figure(image("../../plots/track/qa/track2d/track_p_dedx_expected_all.pdf", width: 100%), caption: [$dif E slash dif x$ versus momentum for all tracks, same selection as @fig:nhitsfit_lin, with the expected $dif E slash dif x$ for each hypothesis.]) <fig:dedx_p>],
+  [#figure(image("../../plots/track/qa/track2d/track_p_dedx_expected_all.pdf", width: 100%), caption: [$dif E slash dif x$ versus momentum for all tracks, with the expected $dif E slash dif x$ for each hypothesis.]) <fig:dedx_p>],
   [#figure(image("../../plots/track/qa/track2d/track_p_nsigma_kaon_all.pdf", width: 100%), caption: [$n sigma_K$ versus momentum for the same tracks.]) <fig:nsigk_p>],
-  [#figure(image("../../plots/track/qa/track/track_nsigma_kaon.pdf", width: 100%), caption: [$n sigma_K$ of tracks in ULS and LS pairs, same selection as @fig:nhitsfit_lin.]) <fig:nsig_1d_k>],
+  [#figure(image("../../plots/track/qa/track/track_nsigma_kaon.pdf", width: 100%), caption: [$n sigma_K$ of tracks in ULS and LS pairs.]) <fig:nsig_1d_k>],
   [#figure(image("../../plots/track/qa/track/track_nsigma_pion.pdf", width: 100%), caption: [$n sigma_pi$ of the same tracks.]) <fig:nsig_1d_pi>],
 )
 === $n sigma_K$ Calibration with TOF-Identified Kaons <sec:nsigk_tof>
 
 The $n sigma_K$ shift is measured with kaons identified independently of $dif E slash dif x$ by the TOF.
 The $phi.alt -> K^+ K^-$ UPC sample itself yields few TOF-identified kaons: the decay kaons are soft and mostly at large $abs(eta)$, outside the TOF acceptance, and the sample is small.
-We therefore use kaons from peripheral hadronic Au+Au collisions in the same Run-19 data (trigger 700001, SL23e), which cover the full momentum range with high statistics.
-The sample is selected as follows:
+We therefore use kaons from peripheral hadronic Au+Au collisions in the same Run-19 data (zdcmb trigger), referred to below as the peripheral sample, which cover the full momentum range with high statistics.
+The TOF-identified kaons are selected as follows:
 - centrality 70--80% from `StRefMultCorr` (`getCentralityBin9() == 0`), $abs(V_z) < 50 thin "cm"$, $V_r < 2 thin "cm"$, bad runs removed;
 - primary tracks of the highest-ranked vertex with $N_"hits" >= 20$ and $N_"hits" \/ N_"poss" > 0.52$;
-- TOF-matched with $beta < 1$ and $0.22 < m^2 < 0.27 thin "GeV"^2\/c^4$, where $m^2 = p^2 (1\/beta^2 - 1)$ (the stored sample extends to $0.28 thin "GeV"^2\/c^4$);
+- TOF-matched with $beta < 1$ and $0.22 < m^2 < 0.27 thin "GeV"^2\/c^4$, where $m^2 = p^2 (1\/beta^2 - 1)$ (the kaon tuple extends to $0.28 thin "GeV"^2\/c^4$);
 - $abs(n sigma_K) < 5$.
 
 The TOF mass spectrum (@fig:tof_m2_all) shows well-separated pion, kaon, and proton peaks, and the $m^2$ window selects the kaon peak (@fig:tof_m2_kaon).
@@ -153,16 +138,16 @@ The selected tracks form a single band in $n sigma_K$ over the full momentum ran
 The tracks are divided into momentum bins of $0.1 thin "GeV"\/c$ between 0.1 and $2.5 thin "GeV"\/c$, and the $n sigma_K$ distribution in each bin is fitted with a Gaussian in $[-5, 5]$.
 The fitted mean $chevron.l n sigma_K chevron.r (p)$ (@fig:tof_nsigk_mean) is positive at all momenta and largest at low momentum, consistent with the shift seen in @fig:nsigk_p.
 We correct for it with
-$ n sigma_K^"corr" = n sigma_K - chevron.l n sigma_K chevron.r (p), $ <eq:nsigk_corr>
-and $n sigma_K^"corr"$ is used in the kaon selection below.
+$ n sigma_K^"corr" = n sigma_K - chevron.l n sigma_K chevron.r (p). $ <eq:nsigk_corr>
+All kaon requirements from here on use $n sigma_K^"corr"$, and $chi^2_(K K)$ denotes the value computed from it.
 
 #table(
   columns: (1fr, 1fr),
   stroke: none,
   align: top,
-  [#figure(image("../../plots/track/PID/track_m2_all.pdf", width: 100%), caption: [TOF $m^2$ of all TOF-matched tracks in the 70--80% sample.]) <fig:tof_m2_all>],
-  [#figure(image("../../plots/track/PID/track_m2.pdf", width: 100%), caption: [$m^2$ of the stored kaon candidates ($0.22 < m^2 < 0.28 thin "GeV"^2\/c^4$).]) <fig:tof_m2_kaon>],
-  [#figure(image("../../plots/track/PID/track_p_nsigma_kaon.pdf", width: 100%), caption: [$n sigma_K$ versus momentum for the stored kaon candidates, before the $abs(n sigma_K) < 5$ requirement.]) <fig:tof_nsigk_p>],
+  [#figure(image("../../plots/track/PID/track_m2_all.pdf", width: 100%), caption: [TOF $m^2$ of all TOF-matched tracks in the peripheral sample.]) <fig:tof_m2_all>],
+  [#figure(image("../../plots/track/PID/track_m2.pdf", width: 100%), caption: [$m^2$ of the kaon candidates in the tuple ($0.22 < m^2 < 0.28 thin "GeV"^2\/c^4$).]) <fig:tof_m2_kaon>],
+  [#figure(image("../../plots/track/PID/track_p_nsigma_kaon.pdf", width: 100%), caption: [$n sigma_K$ versus momentum for the same kaon candidates, before the $abs(n sigma_K) < 5$ requirement.]) <fig:tof_nsigk_p>],
   [#figure(image("../../plots/track/PID/nsigmakaon_mean_vs_p.pdf", width: 100%), caption: [Mean $n sigma_K$ of TOF-identified kaons versus momentum, from Gaussian fits.]) <fig:tof_nsigk_mean>],
 )
 
@@ -197,33 +182,20 @@ The correction is applied in this range, which contains essentially all tracks o
 === Cross-Check with Kaons from $phi.alt -> K^+ K^-$ <sec:nsigk_phi>
 
 The $n sigma_K$ shift is cross-checked in situ with kaons from $phi.alt$ decays in the UPC sample, selected as follows:
-- BBC veto, two primary tracks in the event, $abs(V_z) <= 100 thin "cm"$, $V_r < 5 thin "cm"$, pair rapidity $abs(y) < 0.5$, and $abs(n sigma_K) <= 5$ for both tracks;
+- BBC veto, $N_"prim" = 2$, $abs(V_z) <= 100 thin "cm"$, $V_r <= 5 thin "cm"$, pair rapidity $abs(y_(K K)) < 0.5$, and $abs(n sigma_K) <= 5$ for both tracks;
 - tag and probe: a track (probe) is used when the other track (tag) satisfies the pion rejection $abs(n sigma_pi) >= 3$, so that no pion rejection is applied to the track whose $n sigma_K$ is measured.
 
-The non-$phi.alt$ background in the window $1.00 < M_(K K) < 1.04 thin "GeV"\/c^2$ is described by probes from the sideband $1.06 < M_(K K) < 1.10 thin "GeV"\/c^2$.
+The non-$phi.alt$ background in the mass window $1.00 < M_(K K) < 1.04 thin "GeV"\/c^2$ is described by probes from the sideband $1.06 < M_(K K) < 1.10 thin "GeV"\/c^2$.
 The sideband is scaled to the background in the window obtained from a fit of the probe mass spectrum with a Voigtian (PDG width) plus a linear background (@fig:phi_probe_mass).
 In each momentum bin, the $n sigma_K$ distribution of the window probes is fitted with a binned Poisson likelihood using a Gaussian for the kaons plus the scaled sideband distribution as a fixed background template.
 
-The resulting $chevron.l n sigma_K chevron.r (p)$ agrees with the TOF kaons within the statistical uncertainties (@fig:phi_nsigk_mean).
+The resulting $chevron.l n sigma_K chevron.r (p)$ agrees with the TOF-identified kaons within the statistical uncertainties (@fig:phi_nsigk_mean).
 Since the TOF sample is far more precise and covers the full momentum range, the TOF result (@sec:nsigk_tof) is used as the nominal correction.
 
 #table(
   columns: (1fr, 1fr),
   stroke: none,
   align: top,
-  [#figure(image("../../plots/track/PID/phi/mass.pdf", width: 100%), caption: [$M_(K K)$ of tag-and-probe pairs with the fit; dashed lines mark the $phi.alt$ window and the sideband.]) <fig:phi_probe_mass>],
+  [#figure(image("../../plots/track/PID/phi/mass.pdf", width: 100%), caption: [$M_(K K)$ of tag-and-probe pairs with the fit; dashed lines mark the mass window and the sideband.]) <fig:phi_probe_mass>],
   [#figure(image("../../plots/track/PID/phi/mean_vs_p.pdf", width: 100%), caption: [Mean $n sigma_K$ of kaons from $phi.alt$ decays compared with the TOF-identified kaons.]) <fig:phi_nsigk_mean>],
 )
-
-=== Coherent Region (low pT) <sec:pid_coh>  // dE/dx cuts + why
-=== Incoherent Region (high pT) <sec:pid_incoh>
-== Selection Summary          // cut-flow table, one column per region
-
-= Signal Extraction
-== Coherent Signal
-=== Invariant-Mass Fit
-=== Incoherent Contamination
-== Incoherent Signal <sec:sig_incoh>
-=== Invariant-Mass Fit
-=== Background Estimation
-== Yield Summary

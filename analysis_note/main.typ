@@ -5,7 +5,6 @@
 //
 // Each \section of the original LaTeX note lives in its own file under
 // sections/. To add a section, create a file there and #include it below.
-// Shared layout helpers (e.g. figure-pair) live in helpers.typ.
 //
 // Math symbol note: LaTeX's \phi (straight phi) is `phi.alt` in Typst; plain
 // Typst `phi` is the looped variant, i.e. LaTeX's \varphi.
@@ -56,5 +55,11 @@
 #include "sections/01_introduction.typ"
 #include "sections/02_dataset_and_trigger.typ"
 #include "sections/03_event_selection.typ"
-#include "sections/04_Signal_extraction.typ"
-#include "sections/05_efficiencies.typ"
+#include "sections/04_track_selection_and_pid.typ"
+#include "sections/05_signal_extraction.typ"
+#include "sections/06_efficiencies.typ"
+
+// ---- Appendix --------------------------------------------------------------
+#counter(heading).update(0)
+#set heading(numbering: "A.1", supplement: [Appendix])
+#include "sections/A_candidate_tracks.typ"

@@ -1,4 +1,4 @@
-= Dataset and Trigger
+= Dataset and Trigger <sec:dataset>
 
 This analysis uses the Run-19 Au+Au dataset collected at $sqrt(s_(N N)) = 200  "GeV"$.
 Run-19 is the first Au+Au dataset collected after the full installation of the inner Time Projection Chamber (iTPC) upgrade.
@@ -41,12 +41,12 @@ The integrated luminosity for the zdcmb trigger is obtained from the #link("http
 
 #figure(
   image("../../plots/events/zdc_rate_vs_lumi.pdf", width: 100%),
-  caption: [Run-by-run integrated luminosity compared to the ZDC coincidence rate for the Run-19 Au+Au zdcmb trigger. Left: live ZDC coincidences per run versus integrated luminosity, with a proportional fit. Right: their ratio, the implied ZDC coincidence cross section, versus the mean ZDC coincidence rate.],
+  caption: [Live ZDC coincidences per run versus integrated luminosity (left), and their ratio, the implied ZDC cross section, versus the mean ZDC coincidence rate (right).],
 )<fig:run19_lumi_vs_zdc_rate>
 
 #figure(
   image("../../plots/events/lumi_vs_events.pdf", width: 100%),
-  caption: [Run-by-run integrated luminosity compared to the number of events recorded for the Run-19 Au+Au zdcmb trigger. Left: events per run versus integrated luminosity, with a proportional fit. Right: events per unit luminosity for each run.],
+  caption: [Recorded events per run versus integrated luminosity (left), and events per unit luminosity for each run (right).],
 )<fig:run19_lumi_vs_events>
 
 == Bad Runs

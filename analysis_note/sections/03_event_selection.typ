@@ -1,4 +1,4 @@
-= Event Selection
+= Event Selection <sec:event_selection>
 
 UPCs are characterized by large impact parameters, which strongly suppress direct hadronic interactions between the two nuclei.
 In photon-induced vector-meson production, the exchanged photon is colorless and the interaction with the target proceeds through a color-singlet exchange.
@@ -15,7 +15,9 @@ Since the geometrical acceptance and tracking performance of the TPC depend on t
 Vertex-quality requirements are therefore applied to define a well-controlled collision region and to suppress poorly reconstructed or non-collision vertices before the remaining event-level selections are imposed.
 
 For this analysis, we require the reconstructed event vertex to satisfy
-$ abs(V_z) < 100 thin "cm". $ <eq:vz_cut>
+$ abs(V_z) <= 100 thin "cm", wide V_r <= 5 thin "cm", $ <eq:vz_cut>
+where $V_r = sqrt(V_x^2 + V_y^2)$ is the transverse vertex position.
+The radial requirement restricts the vertex to the beam region.
 The integrated luminosity is determined using the ZDC-based luminosity measurement, whose longitudinal acceptance is not restricted in the same way as the TPC tracking acceptance.
 Because the effective fiducial region of the TPC is smaller than the longitudinal interaction region sampled by the ZDC luminosity measurement, the $V_z$ requirement introduces an additional fiducial acceptance on the analyzed event sample.
 The corresponding efficiency associated with this restricted vertex region, including the $V_z$-dependent vertex reconstruction and tracking efficiency, is therefore evaluated separately using embedding and incorporated into the analysis correction.
@@ -55,7 +57,7 @@ $ #raw("bbcEast") = 0 wide "and" wide #raw("bbcWest") = 0. $ <eq:bbc_dsm_veto>
 To select events consistent with the exclusive two-track final state of $phi.alt -> K^+ K^-$, an event-multiplicity requirement is applied in addition to the BBC veto.
 The corresponding selections are:
 
-- Each event must contain exactly two primary tracks.
+- Each event must contain exactly two primary tracks, $N_"prim" = 2$.
 - The two primary tracks must be associated with the same reconstructed primary vertex.
 
 These requirements select events with a single two-track primary vertex and suppress events containing additional charged-particle activity, as expected from hadronic interactions or pileup.

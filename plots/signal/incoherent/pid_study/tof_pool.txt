@@ -1,0 +1,21 @@
+SL23e data and correction; same-track K/e/pi PID tuples.
+5178705 donors; momentum bins 0.01 GeV/c; charge matched.
+TOF m2: 0.22 to 0.28; nHits >= 20.
+No TPC cut on donors. Sparse momentum bins are left uncovered.
+KK <= 10, pipi >= 15; reject ee < 10 OR ee < 2*KK.
+Raw counts in 1 < M_KK < 1.04; no background subtraction.
+
+All pT: covered 268/298; observed rejected 13; predicted rejected 14.5722; observed loss 4.85075 +/- 1.31232%; predicted loss 5.4374 +/- 1.15372%
+pT bin 1: covered 51/73; observed rejected 0; predicted rejected 0; observed loss 0 +/- 0%; predicted loss 0 +/- 0%
+pT bin 2: covered 118/126; observed rejected 1; predicted rejected 1.27352; observed loss 0.847458 +/- 0.843859%; predicted loss 1.07925 +/- 0.596449%
+pT bin 3: covered 99/99; observed rejected 12; predicted rejected 13.2987; observed loss 12.1212 +/- 3.28018%; predicted loss 13.433 +/- 2.86719%
+
+pT bins: 0.3-0.5, 0.5-0.7, 0.7-0.9 GeV/c.
+Prediction errors describe the data momentum mixture and finite draws.
+Data and prediction use the same momentum sample; their errors are correlated.
+This is a conditional electron-cut test, not an absolute PID efficiency.
+Generated-phi check: 2000000 decays; joint parent pT/y sampled from 298 nominal mass-window data pairs before electron rejection,
+sin^2(theta) helicity distribution, natural width 4.249 MeV.
+Generated phi, pT 0.3-0.5: before electron cuts 306808; after electron cuts 306808; loss 0 +/- 0%
+Generated phi, pT 0.5-0.7: before electron cuts 783062; after electron cuts 773864; loss 1.17462 +/- 0.0121754%
+Generated phi, pT 0.7-0.9: before electron cuts 653473; after electron cuts 526282; loss 19.4638 +/- 0.0489774%
