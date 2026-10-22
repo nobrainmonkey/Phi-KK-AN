@@ -1,0 +1,18 @@
+# Run19 Au+Au 200 GeV embedding MuDst -> UPCDst, using STAR SL23e.
+# With direct XML submission, the XML controls input files and output paths.
+
+# Save full MC tracks/vertices and MC-reco associations; bypass trigger selection.
+is_mc 2
+tof_start_zero 1
+make_RP_event 0
+
+# Record this trigger ID only if present. It is NOT required for embedding.
+# DSM words are saved independently of this trigger-ID list.
+add_trigger 700001
+
+# Use the default BEMC clustering conditions, as in the validated conversion.
+bemc_cluster_param 0
+bemc_size_max 4
+bemc_energy_seed 0.3
+bemc_energy_add 0.001
+bemc_energy_threshold_all 0.1

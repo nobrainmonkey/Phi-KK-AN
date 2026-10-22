@@ -13,3 +13,9 @@ data/
 # Third-party reference material
 ref_vz/
 plots/events/lumi_by_run.txt
+
+# UPCDst: local build output and CVS metadata
+mc_analysis/lib/
+mc_analysis/*.pdf
+CVS/
+.consign
